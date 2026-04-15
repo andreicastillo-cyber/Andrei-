@@ -5,8 +5,10 @@ This is a console-based shopping cart system in C#.
 ## Features
 - Product menu
 - Add to cart
+- Loop for customer option to continue or stop
 - Stock validation
 - Receipt and total
+- updated stock after receipt
 
 ## Author
 Chris andrei a castillo
