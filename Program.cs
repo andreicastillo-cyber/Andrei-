@@ -39,6 +39,7 @@ class Program
             new Product { Id = 3, Name = "Table Cloth", Price = 200, RemainingStock = 400 }
         };
 
+        double grandTotal = 0;
         char choice;
 
         do
@@ -88,6 +89,7 @@ class Program
             Product selected = products[productChoice - 1];
 
             double total = selected.GetItemTotal(quantity);
+            grandTotal += total;
 
             Console.WriteLine($"\nAdded: {selected.Name} x{quantity}");
             Console.WriteLine($"Subtotal: ₱{total}");
@@ -99,5 +101,31 @@ class Program
             Console.WriteLine();
 
         } while (choice == 'Y');
+
+        
+
+        Console.WriteLine("\n=== RECEIPT ===");
+        Console.WriteLine($"Total: ₱{grandTotal}");
+
+        double discount = 0;
+
+        if (grandTotal >= 5000)
+        {
+            discount = grandTotal * 0.10;
+            Console.WriteLine($"Discount (10%): ₱{discount}");
+        }
+
+        double finalTotal = grandTotal - discount;
+
+        Console.WriteLine($"Final Total: ₱{finalTotal}");
+
+        
+
+        Console.WriteLine("\n=== UPDATED STOCK ===");
+
+        foreach (Product p in products)
+        {
+            Console.WriteLine($"{p.Name} - Remaining: {p.RemainingStock}");
+        }
     }
 }
